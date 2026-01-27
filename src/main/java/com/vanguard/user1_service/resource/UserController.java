@@ -6,6 +6,7 @@ import com.vanguard.user1_service.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,5 +20,10 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@Valid @RequestBody UserCreateRequest request) {
         return userService.createUser(request);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
     }
 }

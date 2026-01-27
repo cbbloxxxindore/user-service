@@ -8,4 +8,6 @@ public interface UserService {
 
 
     User createUser(UserCreateRequest request);
+
+    User getUserById(Long id);
 }
